@@ -6,29 +6,33 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
  
-  const handleSubmit = async () => {
-    if (!text.trim()) return;
-    setLoading(true);
-    setResult(null);
+  
+  
+  const API_URL = import.meta.env.VITE_API_URL ;
 
-    try {
-      const response = await fetch("http://127.0.0.1:8000/predict", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text }),
-      });
+const handleSubmit = async () => {
+  if (!text.trim()) return;
+  setLoading(true);
+  setResult(null);
 
-      const data = await response.json();
-      setResult(data);
-    } catch (err) {
-      console.error("Error:", err);
-      setResult({ prediction: "Error", probabilities: [] });
-    }
+  try {
+    const response = await fetch(`${API_URL}/predict`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text }),
+    });
 
-    setLoading(false);
-  };
+    const data = await response.json();
+    setResult(data);
+  } catch (err) {
+    console.error("Error:", err);
+    setResult({ prediction: "Error", probabilities: [] });
+  }
+
+  setLoading(false);
+};
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">

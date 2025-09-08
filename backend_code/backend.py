@@ -16,10 +16,9 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,       # allow your React frontend
-    allow_credentials=True,
-    allow_methods=["*"],         # allow GET, POST, OPTIONS
-    allow_headers=["*"],         # allow headers
+    allow_origins=["*"],  # or ["https://your-frontend.onrender.com"]
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # 🔹 Request schema
