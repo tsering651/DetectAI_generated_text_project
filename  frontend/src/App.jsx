@@ -117,11 +117,7 @@ function App() {
       <header className="w-full flex items-center justify-between bg-white shadow-md px-6 py-4 border-b border-gray-200">
         {/* Left: Logo + Name */}
         <div className="flex items-center space-x-3">
-          <img
-            src="/logo.png" // replace with your own logo file
-            alt="Logo"
-            className="h-8 w-8"
-          />
+         
           <h1 className="text-xl font-bold text-indigo-700">AI Detector</h1>
         </div>
 
